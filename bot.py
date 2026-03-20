@@ -21,7 +21,7 @@ def start(message):
         "🔓 No KYC\n\n"
         "✌️ Big wins start with one spin."
     )
-    bot.send_photo(message.chat.id, "https://i.ibb.co/8DK0SN7d/1080-1920-1-8.png", caption=text, reply_markup=markup)
+   bot.send_photo(message.chat.id, open("/app/image.png", "rb"), caption=text, reply_markup=markup)
 
 @bot.message_handler(commands=['post'])
 def post(message):
