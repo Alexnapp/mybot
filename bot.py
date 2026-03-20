@@ -21,8 +21,7 @@ def start(message):
         "🔓 No KYC\n\n"
         "✌️ Big wins start with one spin."
     )
-    with open("/Users/oleksandr/Desktop/New Folder With Items/1080_1920_ 1.8.png", "rb") as photo:
-        bot.send_photo(message.chat.id, photo, caption=text, reply_markup=markup)
+    bot.send_photo(message.chat.id, "https://i.ibb.co/8DK0SN7d/1080-1920-1-8.png", caption=text, reply_markup=markup)
 
 @bot.message_handler(commands=['post'])
 def post(message):
