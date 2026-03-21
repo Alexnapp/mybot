@@ -10,18 +10,12 @@ subscribers = set()
 @bot.message_handler(commands=['start'])
 def start(message):
     subscribers.add(message.chat.id)
-    bot.send_message(message.chat.id, "✅ Ти підписався на розсилку!")
+    bot.send_message(message.chat.id, "Ти підписався на розсилку!")
     markup = InlineKeyboardMarkup()
     markup.add(InlineKeyboardButton("GET $50", url="https://qzino.click/50usdt"))
-    text = (
-        "💸 $50 for All New Players 💸\n\n"
-        "Your bonus is already waiting 👇\n\n"
-        "🎰 Start playing right away\n"
-        "⚡ Fast payouts\n"
-        "🔓 No KYC\n\n"
-        "✌️ Big wins start with one spin."
-    )
-   bot.send_photo(message.chat.id, open("/app/image.png", "rb"), caption=text, reply_markup=markup)
+    text = "💸 $50 for All New Players 💸\n\nYour bonus is already waiting 👇\n\n🎰 Start playing right away\n⚡ Fast payouts\n🔓 No KYC\n\n✌️ Big wins start with one spin."
+    with open("image.png", "rb") as photo:
+        bot.send_photo(message.chat.id, photo, caption=text, reply_markup=markup)
 
 @bot.message_handler(commands=['post'])
 def post(message):
@@ -33,7 +27,7 @@ def post(message):
         url = parts[1].strip()
         button_text = parts[2].strip() if len(parts) > 2 else "Перейти на сайт"
     except:
-        bot.send_message(message.chat.id, "❌ Формат:\n/post Текст | https://сайт.com | Назва кнопки")
+        bot.send_message(message.chat.id, "Формат:\n/post Текст | https://сайт.com | Назва кнопки")
         return
     markup = InlineKeyboardMarkup()
     markup.add(InlineKeyboardButton(button_text, url=url))
@@ -44,12 +38,12 @@ def post(message):
             count += 1
         except:
             pass
-    bot.send_message(message.chat.id, f"✅ Надіслано {count} підписникам!")
+    bot.send_message(message.chat.id, f"Надіслано {count} підписникам!")
 
 @bot.message_handler(commands=['count'])
 def count_cmd(message):
     if message.from_user.id != ADMIN_ID:
         return
-    bot.send_message(message.chat.id, f"👥 Підписників: {len(subscribers)}")
+    bot.send_message(message.chat.id, f"Підписників: {len(subscribers)}")
 
-bot.polling()
+bot.infinity_polling()
