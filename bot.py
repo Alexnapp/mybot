@@ -10,7 +10,6 @@ subscribers = set()
 @bot.message_handler(commands=['start'])
 def start(message):
     subscribers.add(message.chat.id)
-    bot.send_message(message.chat.id, "Ти підписався на розсилку!")
     markup = InlineKeyboardMarkup()
     markup.add(InlineKeyboardButton("GET $50", url="https://qzino.click/50usdt"))
     text = "💸 $50 for All New Players 💸\n\nYour bonus is already waiting 👇\n\n🎰 Start playing right away\n⚡ Fast payouts\n🔓 No KYC\n\n✌️ Big wins start with one spin."
